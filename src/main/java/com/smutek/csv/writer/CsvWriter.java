@@ -2,7 +2,6 @@ package com.smutek.csv.writer;
 
 import au.com.bytecode.opencsv.CSVWriter;
 import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 import java.io.FileWriter;
@@ -15,7 +14,7 @@ import java.util.List;
  */
 public class CsvWriter {
 
-    public static int writeFeed(String filename, SyndFeed feed, int id){
+    protected static int writeFeed(String filename, SyndFeed feed, int id){
         CSVWriter writer = null;
         try {
             writer = new CSVWriter(new FileWriter(filename, true), ' ');

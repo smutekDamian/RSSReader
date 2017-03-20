@@ -7,13 +7,12 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.URL;
 
 /**
  * Created by damian on 16.03.17.
  */
-public class RssReader {
+public class RssReader extends CsvWriter {
     private SyndFeedInput input;
 
     public RssReader() {
