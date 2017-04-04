@@ -14,17 +14,15 @@ import java.util.List;
  */
 public class CsvWriter {
 
-    protected static int writeFeed(String filename, SyndFeed feed, int id){
+    protected static void writeFeed(String filename, SyndFeed syndFeed, String feedTitle){
         CSVWriter writer = null;
         try {
             writer = new CSVWriter(new FileWriter(filename, true), ' ');
-            List entries = feed.getEntries();
-            String feedTitle = feed.getTitle();
+            List entries = syndFeed.getEntries();
             for (final Iterator iter = entries.iterator(); iter.hasNext(); ){
                 final SyndEntry entry = (SyndEntry) iter.next();
-                writer.writeNext((id + "#" + feedTitle + "#" + entry.getPublishedDate() + "#" + entry.getTitle() +
+                writer.writeNext((feedTitle + "#" + entry.getPublishedDate() + "#" + entry.getTitle() +
                         "#" + entry.getDescription().getValue()).split("#"));
-                id++;
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,7 +34,6 @@ public class CsvWriter {
                 e.printStackTrace();
             }
         }
-        return id;
     }
 
 }
